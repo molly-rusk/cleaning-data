@@ -1,6 +1,6 @@
 from email import header
 import pandas as pd
-data = pd.read_csv("artwork_sample.csv")
+# data = pd.read_csv("artwork_data.csv")
 
 #****************************************************************
 
@@ -215,5 +215,68 @@ data = pd.read_csv("artwork_sample.csv")
 # Remove whitespace, replace bad data, drop rows of data, 
 # and remove duplicate data for the artist artwork dataset
 
+# Stripping White Space
+# data = pd.read_csv("artwork_data.csv", low_memory=False)
+# print(data.loc[data.title.str.contains('\s$', regex=True)])
+# data.title.str.strip()
+# print(data.loc[data.title.str.contains('\s$', regex=True)])
+# data.title = data.title.str.strip()
+# print(data.loc[data.title.str.contains('\s$', regex=True)])
+# data.title.str.lstrip()
+# print(data.title.transform(lambda x: x.strip()))
+
+# Replacing Bad Data with Nan
+# data = pd.read_csv("artwork_data.csv", low_memory=False)
+# print(data.head())
+# print(pd.isna(data.loc[:, 'dateText']))
+# from numpy import nan
+# print(data.replace({'dateText' : {'date not known' : nan}}))
+# print(data.head())
+# data.replace({'dateText' : {'date not known' : nan}}, inplace=True)
+# print(data.head())
+# print(data.head())
+# data.loc[data.dateText == 'date not known', ['dateText']] == nan
+# print(data.loc[data.year.notnull() & data.year.astype(str).str.contains('[^0-9]')])
+# data.loc[data.year.notnull() & data.year.astype(str).str.contains('[^0-9]'), ['year']] == nan
+# print(data.iloc[67968:67969])
 
 
+# Filling Missing Data with a Value
+# data = pd.read_csv("artwork_data.csv", low_memory=False)
+# print(data.head())
+# print(data.fillna(0)) fills in all values with Nan as 0, need to specify which column
+# print(data.fillna(value={'depth': 0}))
+# print(data.head())
+# data.fillna(value={'depth' : 0}, inplace=True)
+# print(data.head())
+
+# Drop NaN Rows
+# data = pd.read_csv("artwork_data.csv", low_memory=False)
+# print(data.head())
+# print(data.shape)
+# print(data.dropna().shape) 
+# print(data.dropna(how='all').shape)
+# print(data.dropna(thresh=15).shape)
+# print(data.dropna(subset=['year', 'acquisitionYear']).shape)
+# print(data.dropna(subset=['year', 'acquisitionYear'], how='all').shape)
+# print(data.shape)
+# data.dropna(subset=['year', 'acquisitionYear'], inplace=True)
+# print(data.shape)
+
+# Identifying and Dropping Duplicate Data
+# data = pd.read_csv("artwork_sample.csv")
+# print(data)
+# print(data.drop_duplicates())
+# print(data.drop_duplicates(subset=['artist']))
+# print(data.drop_duplicates(subset=['artist'], keep='first')) keep only the first result
+# print(data.drop_duplicates(subset=['artist'], keep='last')) keep the last result
+# print(data.drop_duplicates(subset=['artist'], keep=False)) keep no duplicates
+# data.drop_duplicates(subset=['artist'], keep='first', inplace=True)
+# print(data)
+# data = pd.read_csv("artwork_data.csv", low_memory=False)
+# print(data.shape)
+# print(data.duplicated())
+# print(data.loc[data.duplicated()])
+# data.duplicated(subset=['artist', 'title'], keep=False)
+# print(data.loc[data.duplicated(subset=['artist', 'title'], keep=False)])
+# print(data.loc[data.title.str.contains('The Circle of the Lustful')])
